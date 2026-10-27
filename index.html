@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Final - Panzotty</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+        
+        :root {
+            --cun-blue: #112338;
+            --cun-green: #90c741;
+            --cun-grey-title: #748191;
+            --cun-bg-content: #f8f9fa;
+            --text-dark: #333333;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #333;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .slide {
+            width: 1024px;
+            height: 576px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.6);
+            box-sizing: border-box;
+            background-color: var(--cun-bg-content);
+        }
+
+        /* -----------------------------------------
+           DISEÑO DIAPOSITIVA DE TÍTULO
+           ----------------------------------------- */
+        .slide-title {
+            background-color: var(--cun-grey-title);
+            background: linear-gradient(135deg, #818e9d 0%, #687585 100%);
+            color: white;
+            padding: 80px 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-title .top-bar, .slide-title .bottom-bar {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            background-color: var(--cun-blue);
+            z-index: 10;
+        }
+        .slide-title .top-bar { top: 0; height: 30px; }
+        .slide-title .bottom-bar { bottom: 0; height: 40px; }
+
+        .slide-title .decor-1 {
+            position: absolute;
+            top: -200px;
+            right: -50px;
+            width: 300px;
+            height: 800px;
+            background-color: var(--cun-green);
+            transform: rotate(35deg);
+            z-index: 3;
+        }
+        .slide-title .decor-2 {
+            position: absolute;
+            top: -150px;
+            right: -200px;
+            width: 250px;
+            height: 800px;
+            background-color: var(--cun-blue);
+            transform: rotate(35deg);
+            z-index: 4;
+        }
+        .slide-title .decor-3 {
+            position: absolute;
+            top: -250px;
+            right: 0px;
+            width: 400px;
+            height: 800px;
+            background-color: #5d6978;
+            transform: rotate(35deg);
+            z-index: 2;
+        }
+
+        .slide-title .content {
+            position: relative;
+            z-index: 20;
+            width: 75%;
+        }
+
+        .slide-title h3 {
+            font-weight: 400;
+            font-size: 22px;
+            margin-bottom: 50px;
+        }
+
+        .slide-title h1 {
+            font-size: 60px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin: 0 0 15px 0;
+        }
+
+        .slide-title h2 {
+            font-size: 26px;
+            font-weight: 400;
+            margin-top: 0;
+            margin-bottom: 50px;
+        }
+
+        .slide-title p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 0;
+        }
+        .slide-title .presentado { font-weight: 700; margin-bottom: 5px; }
+
+        /* -----------------------------------------
+           DISEÑO DIAPOSITIVAS DE CONTENIDO
+           ----------------------------------------- */
+        .slide-content {
+            padding: 70px 80px;
+        }
+
+        .slide-content .top-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 25px;
+            background-color: var(--cun-blue);
+            z-index: 10;
+        }
+
+        .slide-content .bottom-triangle {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 400px;
+            height: 180px;
+            background-color: var(--cun-blue);
+            clip-path: polygon(100% 0, 100% 100%, 0% 100%);
+            z-index: 1;
+        }
+
+        .slide-content .top-decor-green {
+            position: absolute;
+            top: -150px;
+            right: -10px;
+            width: 90px;
+            height: 500px;
+            background-color: var(--cun-green);
+            transform: rotate(40deg);
+            z-index: 2;
+        }
+
+        .slide-content .top-decor-grey {
+            position: absolute;
+            top: -150px;
+            right: -130px;
+            width: 200px;
+            height: 500px;
+            background-color: #e2e5e9;
+            transform: rotate(40deg);
+            z-index: 1;
+        }
+
+        .slide-content .top-decor-blue {
+            position: absolute;
+            top: -150px;
+            right: -250px;
+            width: 200px;
+            height: 500px;
+            background-color: var(--cun-blue);
+            transform: rotate(40deg);
+            z-index: 3;
+        }
+
+        .slide-content h1 {
+            color: var(--cun-blue);
+            font-size: 44px;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .slide-content h2 {
+            color: var(--text-dark);
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .slide-content p, .slide-content li {
+            color: #444;
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 10;
+            max-width: 85%;
+        }
+
+        .slide-content ul { padding-left: 25px; }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* -----------------------------------------
+           IMAGEN LOGO CUN
+           ----------------------------------------- */
+        .logo-img {
+            width: 140px;
+            height: auto;
+        }
+
+        .logo-container-title {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            z-index: 20;
+        }
+
+        .logo-container-content {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            z-index: 20;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- DIAPOSITIVA 1: TÍTULO -->
+    <div class="slide slide-title">
+        <div class="top-bar"></div>
+        <div class="decor-3"></div>
+        <div class="decor-1"></div>
+        <div class="decor-2"></div>
+        
+        <div class="content">
+            <h3>Especialización en Alta Gerencia</h3>
+            <h1>Implementación de canales digitales</h1>
+            <h2>Estrategia de modernización empresarial en la panadería Panzotty de Fontibón (Bogotá)</h2>
+            
+            <p class="presentado">Presentado por:</p>
+            <p>Daniel Armando Cárdenas Plata | Jaime Humberto Olaya Rossell<br>Nancy Franco Castro | Sergio Andrey Arcia Useche | Myrzkander Latorre Perez</p>
+        </div>
+        
+        <div class="logo-container-title">
+            <img src="content/cun.png" alt="Logo CUN" class="logo-img">
+        </div>
+
+        <div class="bottom-bar"></div>
+    </div>
+
+    <!-- DIAPOSITIVA 2: INTRODUCCIÓN -->
+    <div class="slide slide-content">
+        <div class="top-bar"></div>
+        <div class="top-decor-grey"></div>
+        <div class="top-decor-green"></div>
+        <div class="top-decor-blue"></div>
+        <div class="bottom-triangle"></div>
+
+        <h1>Introducción</h1>
+        
+        <h2>Contexto del Sector</h2>
+        <p>La adopción tecnológica es un factor determinante para la competitividad y supervivencia empresarial, pero el sector artesanal evidencia marcadas brechas en la integración virtual.</p>
+        
+        <h2>El Impacto del Aislamiento</h2>
+        <p>El "silencio digital" de la panadería limita su visibilidad frente a un consumidor cuyos hábitos dependen de entornos móviles. La ausencia en redes sociales afecta la capacidad de establecer vínculos y sostener la competitividad frente a competidores digitalizados.</p>
+        
+        <div class="logo-container-content">
+            <img src="content/cun.png" alt="Logo CUN" class="logo-img">
+        </div>
+    </div>
+
+    <!-- DIAPOSITIVA 3: PLANTEAMIENTO DEL PROBLEMA -->
+    <div class="slide slide-content">
+        <div class="top-bar"></div>
+        <div class="top-decor-grey"></div>
+        <div class="top-decor-green"></div>
+        <div class="bottom-triangle"></div>
+
+        <h1>Planteamiento del Problema</h1>
+        
+        <h2>Problema Identificado</h2>
+        <p>Los consumidores toman decisiones influenciados por contenidos visuales en plataformas digitales. La total ausencia de perfiles en redes sociales contribuye a una disminución progresiva del posicionamiento competitivo de la panadería.</p>
+        
+        <h2>Pregunta Central</h2>
+        <p>¿Cuáles son las principales barreras que dificultan la adopción de nuevas tecnologías en la panadería Panzotty y cómo estas afectan su competitividad y sostenibilidad empresarial en el sector panificador?</p>
+
+        <div class="logo-container-content">
+            <img src="content/cun.png" alt="Logo CUN" class="logo-img">
+        </div>
+    </div>
+
+    <!-- DIAPOSITIVA 4: OBJETIVOS -->
+    <div class="slide slide-content">
+        <div class="top-bar"></div>
+        <div class="top-decor-grey"></div>
+        <div class="top-decor-green"></div>
+        <div class="bottom-triangle"></div>
+
+        <h1>Objetivos del Proyecto</h1>
+        
+        <h2>Objetivo General</h2>
+        <p>Proponer una estrategia de marketing digital y un plan de formación en competencias tecnológicas que permitan superar las barreras de adopción y fortalecer la competitividad de Panzotty.</p>
+        
+        <h2>Objetivos Específicos</h2>
+        <ul>
+            <li>Analizar indicadores de posicionamiento digital y alcance comercial.</li>
+            <li>Estructurar una propuesta de capacitación dirigida al personal.</li>
+            <li>Formular estrategia de marketing y determinar costos para su viabilidad.</li>
+        </ul>
+
+        <div class="logo-container-content">
+            <img src="content/cun.png" alt="Logo CUN" class="logo-img">
+        </div>
+    </div>
+
+    <!-- DIAPOSITIVA 5: JUSTIFICACIÓN Y ALCANCES -->
+    <div class="slide slide-content">
+        <div class="top-bar"></div>
+        <div class="top-decor-grey"></div>
+        <div class="top-decor-green"></div>
+        <div class="bottom-triangle"></div>
+
+        <h1>Justificación y Alcances</h1>
+        
+        <h2>Justificación</h2>
+        <p>El desconocimiento, la falta de capacitación y los modelos tradicionales dificultan implementar estrategias; superar esto permite mejorar la interacción con el consumidor y asegurar crecimiento.</p>
+        
+        <h2>Alcances y Limitaciones</h2>
+        <ul>
+            <li><strong>Alcance:</strong> Diagnóstico de barreras y diseño de propuesta estratégica (marketing y capacitación) exclusiva para la sede en Fontibón.</li>
+            <li><strong>Limitaciones:</strong> Es un estudio descriptivo y propositivo; no contempla la ejecución operativa ni la medición de resultados a largo plazo.</li>
+        </ul>
+
+        <div class="logo-container-content">
+            <img src="content/cun.png" alt="Logo CUN" class="logo-img">
+        </div>
+    </div>
+
+    <!-- DIAPOSITIVA 6: MARCO TEÓRICO Y CONCEPTUAL -->
+    <div class="slide slide-content">
+        <div class="top-bar"></div>
+        <div class="top-decor-grey"></div>
+        <div class="top-decor-green"></div>
+        <div class="bottom-triangle"></div>
+
+        <h1>Marco Referencial</h1>
+        
+        <div class="grid-2">
+            <div>
+                <h2>Fundamentos Teóricos</h2>
+                <ul>
+                    <li><strong>Philip Kotler:</strong> Marketing 5.0 centrado en el humano, aprovechando herramientas digitales para fortalecer la experiencia.</li>
+                    <li><strong>Michael Porter:</strong> Ventaja competitiva impulsada por estrategias de diferenciación frente a la industria.</li>
+                </ul>
+            </div>
+            <div>
+                <h2>Conceptos Clave</h2>
+                <ul>
+                    <li>Transformación digital y visibilidad digital.</li>
+                    <li>Sostenibilidad empresarial y adopción tecnológica en PYMES.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logo-container-content">
+            <img src="content/cun.png" alt="Logo CUN" class="logo-img">
+        </div>
+    </div>
+
+    <!-- DIAPOSITIVA 7: MARCO CONTEXTUAL Y LEGAL -->
+    <div class="slide slide-content">
+        <div class="top-bar"></div>
+        <div class="top-decor-grey"></div>
+        <div class="top-decor-green"></div>
+        <div class="bottom-triangle"></div>
+
+        <h1>Contexto y Normatividad</h1>
+        
+        <h2>Contexto de Panzotty</h2>
+        <p>Ubicada en un entorno urbano densamente poblado en transición; el perfil sociodemográfico exige rapidez y referencias visuales en redes antes de visitar el local físico.</p>
+        
+        <h2>Respaldo Legal</h2>
+        <ul>
+            <li><strong>Fomento TIC:</strong> Ley 1341 (2009) y Ley 1978 (2019) incentivan la adopción tecnológica para modernizar empresas.</li>
+            <li><strong>Seguridad:</strong> Ley 527 (1999) otorga validez jurídica a operaciones digitales, y Ley 1581 (2012) rige la protección de datos.</li>
+        </ul>
+
+        <div class="logo-container-content">
+            <img src="content/cun.png" alt="Logo CUN" class="logo-img">
+        </div>
+    </div>
+
+    <!-- DIAPOSITIVA 8: METODOLOGÍA -->
+    <div class="slide slide-content">
+        <div class="top-bar"></div>
+        <div class="top-decor-grey"></div>
+        <div class="top-decor-green"></div>
+        <div class="bottom-triangle"></div>
+
+        <h1>Metodología de Investigación</h1>
+        
+        <h2>Enfoque y Diseño</h2>
+        <p>Se desarrolló una investigación de enfoque mixto (cualitativo y cuantitativo) y tipo explicativo. Utiliza un diseño no experimental, transversal y descriptivo-correlacional para analizar el contexto en su estado natural.</p>
+        
+        <h2>Muestra e Instrumentos</h2>
+        <ul>
+            <li><strong>Cuantitativo:</strong> 55 encuestas autoadministradas validadas a consumidores de Modelia/Fontibón.</li>
+            <li><strong>Cualitativo:</strong> 52 entrevistas semiestructuradas a profundidad aplicadas a gerencia y equipo operativo.</li>
+        </ul>
+
+        <div class="logo-container-content">
+            <img src="content/cun.png" alt="Logo CUN" class="logo-img">
+        </div>
+    </div>
+
+    <!-- DIAPOSITIVA 9: RESULTADOS DEL DIAGNÓSTICO -->
+    <div class="slide slide-content">
+        <div class="top-bar"></div>
+        <div class="top-decor-grey"></div>
+        <div class="top-decor-green"></div>
+        <div class="bottom-triangle"></div>
+
+        <h1>Resultados del Diagnóstico</h1>
+        
+        <div class="grid-2">
+            <div>
+                <h2>Consumidores</h2>
+                <ul>
+                    <li>Fuerte uso de dispositivos móviles y preferencia por WhatsApp Business e Instagram.</li>
+                    <li>Ausencia virtual confirma la hipótesis del "silencio digital" de la empresa.</li>
+                </ul>
+            </div>
+            <div>
+                <h2>Entorno Interno</h2>
+                <ul>
+                    <li>Polarización de habilidades tecnológicas, pero con gran apertura hacia la formación digital.</li>
+                    <li>Interacción actual muy empírica sin integración de inventarios o pasarelas organizadas.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="logo-container-content">
+            <img src="content/cun.png" alt="Logo CUN" class="logo-img">
+        </div>
+    </div>
+
+    <!-- DIAPOSITIVA 10: PROPUESTA ESTRATÉGICA -->
+    <div class="slide slide-content">
+        <div class="top-bar"></div>
+        <div class="top-decor-grey"></div>
+        <div class="top-decor-green"></div>
+        <div class="bottom-triangle"></div>
+
+        <h1>Propuesta Estratégica ($20.000.000 COP)</h1>
+        
+        <h2>Pilares de Intervención</h2>
+        <ul>
+            <li><strong>Concientización Interna:</strong> Talleres de formación para panaderos y cajeros en atención virtual.</li>
+            <li><strong>Benchmark y Contenido:</strong> Storytelling visual de procesos como la fermentación de la masa madre.</li>
+            <li><strong>Arquitectura de Canales:</strong> WhatsApp Business estructurado para ventas, Instagram/Facebook para visibilidad, y Google Maps para tráfico local.</li>
+        </ul>
+
+        <div class="logo-container-content">
+            <img src="content/cun.png" alt="Logo CUN" class="logo-img">
+        </div>
+    </div>
+
+    <!-- DIAPOSITIVA 11: CONCLUSIONES -->
+    <div class="slide slide-content">
+        <div class="top-bar"></div>
+        <div class="top-decor-grey"></div>
+        <div class="top-decor-green"></div>
+        <div class="bottom-triangle"></div>
+
+        <h1>Conclusiones</h1>
+        
+        <h2>Impacto y Barreras</h2>
+        <p>Las barreras principales recaen en el desconocimiento, limitaciones financieras y el confort en modelos tradicionales. El "aislamiento digital" restringe gravemente el crecimiento frente a opciones competidoras.</p>
+        
+        <h2>La Solución</h2>
+        <p>El marketing digital articulado con un robusto plan de capacitación interna no es una herramienta secundaria, sino el elemento estratégico primordial para consolidar y garantizar la sostenibilidad empresarial de Panzotty.</p>
+        
+        <div class="logo-container-content">
+            <img src="content/cun.png" alt="Logo CUN" class="logo-img">
+        </div>
+    </div>
+
+</body>
+</html>
