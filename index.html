@@ -224,6 +224,35 @@
             z-index: 10;
         }
 
+        .delivery-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .delivery-photo {
+            margin: 0;
+            text-align: center;
+        }
+
+        .delivery-photo img {
+            display: block;
+            width: 100%;
+            height: 280px;
+            object-fit: contain;
+            background-color: #e2e5e9;
+            border-radius: 8px;
+        }
+
+        .delivery-photo figcaption {
+            margin-top: 10px;
+            color: var(--text-dark);
+            font-size: 16px;
+            font-weight: 600;
+        }
+
         /* -----------------------------------------
            IMAGEN LOGO CUN
            ----------------------------------------- */
@@ -506,6 +535,35 @@
         <h2>La Solución</h2>
         <p>El marketing digital articulado con un robusto plan de capacitación interna no es una herramienta secundaria, sino el elemento estratégico primordial para consolidar y garantizar la sostenibilidad empresarial de Panzotty.</p>
         
+        <div class="logo-container-content">
+            <img src="content/cun.png" alt="Logo CUN" class="logo-img">
+        </div>
+    </div>
+
+    <!-- DIAPOSITIVA 12: DOMICILIOS -->
+    <div class="slide slide-content">
+        <div class="top-bar"></div>
+        <div class="top-decor-grey"></div>
+        <div class="top-decor-green"></div>
+        <div class="bottom-triangle"></div>
+
+        <h1>Domicilios en la panadería</h1>
+
+        <div class="delivery-gallery">
+            <figure class="delivery-photo">
+                <img src="content/foto1.jpeg" alt="Foto 1 del servicio de domicilios">
+                <figcaption>Foto 1</figcaption>
+            </figure>
+            <figure class="delivery-photo">
+                <img src="content/foto2.jpeg" alt="Foto 2 del servicio de domicilios">
+                <figcaption>Foto 2</figcaption>
+            </figure>
+            <figure class="delivery-photo">
+                <img src="content/foto3.jpeg" alt="Foto 3 del servicio de domicilios">
+                <figcaption>Foto 3</figcaption>
+            </figure>
+        </div>
+
         <div class="logo-container-content">
             <img src="content/cun.png" alt="Logo CUN" class="logo-img">
         </div>
